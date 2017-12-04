@@ -17,6 +17,7 @@ const business = {
 
 const businesses = [];
 
+// Add businesses (currently same business repeated) to businesses Array
 for (let i = 0; i < 6; i++) {
   businesses.push(business);
 }
