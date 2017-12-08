@@ -18,10 +18,32 @@ class SearchBar extends React.Component {
     };
   }
 
+  /*
+   * Adds correct class to Search Bar Sorting Option (Is it active or not?)
+   */
+  getSortByClass(sortByOption) {
+    if (this.state.sortBy === sortByOption) {
+      return 'active';
+    }
+    return '';
+  }
+
+  /*
+   * Event handler for a click on a Sorting Option
+   */
+  handleSortByChange(sortByOption) {
+    this.setState({ sortBy: sortByOption });
+  }
+
+  /*
+   * Dynamically render the Sorting Options in the correct order (and correct highlighting aswell)
+   */
   renderSortByOptions() {
     return Object.keys(sortByOptions).map(sortByOption => {
       let sortByOptionValue = sortByOptions[sortByOption];
-      return <li key={sortByOptionValue}>{sortByOption}</li>
+      return <li key={sortByOptionValue}
+                 className={this.getSortByClass(sortByOptionValue)}
+                 onClick={this.handleSortByChange.bind(this, sortByOptionValue)}>{sortByOption}</li>
     });
   }
 
